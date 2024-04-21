@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'USDZ Image Rendere',
-  description: 'Using Open3d on a Python Backend',
+  title: '3d Rendering',
+  description: "App for rendering usdz files from shopify product images",
 };
 
 export default function RootLayout({
