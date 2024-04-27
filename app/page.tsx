@@ -1,6 +1,6 @@
-import PlanInfo from "@/components/PlanInfo";
-import ProductList from "@/components/ProductList";
-import Summary from "@/components/Summary";
+import PlanInfo from "@/containers/PlanInfo";
+import ProductList from "@/containers/ProductList";
+import Summary from "@/containers/Summary";
 
 
 export default function Home() {
