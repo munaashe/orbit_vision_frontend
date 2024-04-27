@@ -1,24 +1,74 @@
 'use client'
-import React from 'react'
+
+import React, { useState } from 'react'
 import Searchbar from '@/components/Searchbar'
 import Filter from '@/components/Filter'
 import Products from '@/components/Products'
 import Button from '@/components/Button'
+import { Product } from '@/components/Products'
 
-const ProductList = () => {
+interface ProductListProps {
+    products: Product[]
+}
+const ProductList = ({
+    products
+}: ProductListProps) => {
     const onSearch = () => {
 
     }
+
+    //filter operations
+    const [selectedFilter, setSelectedFilter] = useState('all');
+
+    const handleFilterChange = (option: string) => {
+        setSelectedFilter(option);
+    };
+
+    const filteredProducts = products.filter((product) => {
+        if (selectedFilter === 'all') {
+            return true;
+        } else if (selectedFilter === 'inStock') {
+            return product.availableQuantity && product.availableQuantity > 0;
+        } else if (selectedFilter === 'outOfStock') {
+            return !product.availableQuantity || product.availableQuantity === 0;
+        } {/*} else if (selectedFilter === 'with3d') {
+            return product.has3D;
+        } else if (selectedFilter === 'no3d') {
+            return !product.has3D;
+        }*/}
+
+        return true;
+    });
+
+    const filterOptions = [
+        { label: 'All', value: 'all' },
+        { label: 'In Stock', value: 'inStock' },
+        { label: 'Out of Stock', value: 'outOfStock' },
+        { label: 'With 3D', value: 'with3d' },
+        { label: 'No 3D', value: 'no3d' },
+    ];
+
     return (
-        <div className='h-full rounded-2xl shadow-2xl p-4 w-full text-center flex flex-col items-center bg-white'>
+        <div className='rounded-2xl shadow-2xl p-4 w-full text-center flex flex-col items-center bg-white'>
             <div className='flex w-full gap-4 items-center justify-center'>
                 <Searchbar
                     onSearch={onSearch}
                 />
-                <Button />
+                <Button
+                    title='Render 3D Images'
+                    onClick={() => { }}
+                    primaryColor='primary'
+                    hoverColor='secondary'
+                />
             </div>
-            <Filter />
-            <Products />
+            <Filter
+                options={filterOptions}
+                selectedOption={selectedFilter}
+                onOptionChange={handleFilterChange}
+            />
+            <Products
+                products={[]}
+            />
         </div>
     )
 }

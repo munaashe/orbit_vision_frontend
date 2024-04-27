@@ -1,8 +1,16 @@
 import React from 'react'
 
-const Heading = () => {
+interface HeadingProps {
+    title: string;
+}
+
+const Heading = ({ title }: HeadingProps) => {
     return (
-        <div>Heading</div>
+        <div
+        className='text-2xl font-semibold py-2'
+        >
+            {title}
+        </div>
     )
 }
 
