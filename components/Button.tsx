@@ -3,14 +3,14 @@ import React from 'react'
 interface ButtonProps {
     title: string;
     primaryColor: string;
-    hoverColor: string;
+    hoverColor?: string;
     onClick: () => void;
 }
 
 const Button = ({
     title,
     primaryColor,
-    hoverColor,
+    hoverColor = 'secondary',
     onClick = () => { }
 }: ButtonProps) => {
     return (

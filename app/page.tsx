@@ -1,12 +1,13 @@
 import PlanInfo from "@/containers/PlanInfo";
 import ProductList from "@/containers/ProductList";
 import Summary from "@/containers/Summary";
+import { products } from "@/data/products";
 
 
 export default function Home() {
   return (
-    <main className="flex h-screen flex-col items-start justify-start p-4 gap-4 w-full bg-[#f5f5f5]">
-      <div className="flex items-start justify-center gap-4 w-full">
+    <div className=" p-4 w-full bg-[#e1e1e1]">
+      <div className="flex flex-grow items-start justify-center gap-4 w-full">
         <Summary
           currentPlan='Basic'
           availableCredit='$200'
@@ -15,8 +16,8 @@ export default function Home() {
         <PlanInfo />
       </div>
       <ProductList
-        products={[]}
+        products={products}
       />
-    </main>
+    </div>
   );
 }

@@ -49,8 +49,13 @@ const ProductList = ({
     ];
 
     return (
-        <div className='rounded-2xl shadow-2xl p-4 w-full text-center flex flex-col items-center bg-white'>
-            <div className='flex w-full gap-4 items-center justify-center'>
+        <div className='rounded-lg shadow-md p-4 w-full text-center  bg-white'
+            style={{
+                backgroundColor: '#ffff',
+                margin: '8px'
+            }}
+        >
+            <div className='flex w-full gap-4 items-center justify-center mt-4'>
                 <Searchbar
                     onSearch={onSearch}
                 />
@@ -67,7 +72,7 @@ const ProductList = ({
                 onOptionChange={handleFilterChange}
             />
             <Products
-                products={[]}
+                products={filteredProducts}
             />
         </div>
     )

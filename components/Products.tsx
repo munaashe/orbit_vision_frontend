@@ -36,12 +36,14 @@ const Products = ({ products }: ProductsProp) => {
     };
     return (
         <div>
-            {currentProducts.map((product) => (
-                <ProductCard
-                    key={product.id}
-                    product={product}
-                />
-            ))}
+            <div className='grid grid-cols-4 gap-4 overflow-y-scroll h-[200px]'>
+                {currentProducts.map((product) => (
+                    <ProductCard
+                        key={product.id}
+                        product={product}
+                    />
+                ))}
+            </div>
             <Pagination
                 currentPage={currentPage}
                 totalProducts={products.length}

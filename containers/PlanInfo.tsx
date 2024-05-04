@@ -3,7 +3,12 @@ import Heading from '@/components/Heading'
 
 const PlanInfo = () => {
     return (
-        <div className='rounded-2xl shadow-lg p-4 w-full h-full bg-white'>
+        <div className='rounded-lg shadow-md p-4 w-full h-full bg-white'
+            style={{
+                backgroundColor: '#ffff',
+                margin: '8px'
+            }}
+        >
             <Heading
                 title='Plan Information'
             />

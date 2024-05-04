@@ -13,11 +13,11 @@ interface FilterProps {
 
 const Filter = ({ options, selectedOption, onOptionChange }: FilterProps) => {
     return (
-        <div className="filter">
+        <div className='flex justify-evenly w-2/3 py-2'>
             {options.map((option) => (
                 <button
                     key={option.value}
-                    className={option.value === selectedOption ? 'selected' : ''}
+                    className={`rounded-xl px-4 py-1 text-white ${option.value === selectedOption ? 'bg-primary' : 'bg-secondary'}`}
                     onClick={() => onOptionChange(option.value)}
                 >
                     {option.label}

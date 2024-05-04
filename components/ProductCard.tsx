@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import React from 'react';
+import denis from '@/assets/denis.jpg'
 
 interface Product {
   id: number;
@@ -15,12 +17,17 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <div className="product-card">
-      <img className="product-image" src={product.imageUrl} alt={product.title} />
-      <h3 className="product-title">{product.title}</h3>
-      <p className="product-description">{product.description}</p>
-      <div className="product-details">
-        <span className="product-price">${product.price.toFixed(2)}</span>
+    <div className="product-card p-2">
+      <div className='h-[110px]'>
+        <Image
+          src={denis}
+          alt={product.title}
+          height={100}
+          width={100}
+        />
+      </div>
+      <h3 className='text-[14px] font-semibold'>{product.title}</h3>
+      <div className='text-[12px] text-secondary italic'>
         {product.availableQuantity && (
           <span className="product-quantity">{product.availableQuantity} in stock</span>
         )}

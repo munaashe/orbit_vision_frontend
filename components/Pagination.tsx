@@ -22,26 +22,39 @@ const Pagination = ({
   const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <div>
+    <div className='p-4 flex flex-col justify-center items-center'>
       <div>
         <span>Show: </span>
         <select value={productsPerPage} onChange={(e) => onProductsPerPageChange(Number(e.target.value))}>
-          <option value={5}>5</option>
-          <option value={10}>10</option>
+          <option value={4}>4</option>
+          <option value={8}>8</option>
           <option value={20}>20</option>
         </select>
         <span> products per page</span>
       </div>
-      <div>
-        <button disabled={currentPage === 1} onClick={() => onPageChange(currentPage - 1)}>
+      <div className='flex gap-2 pt-2'>
+        <button
+          className='bg-primary hover:bg-secondary disabled:bg-tertiary1 rounded-md text-white px-2'
+          disabled={currentPage === 1}
+          onClick={() => onPageChange(currentPage - 1)}
+        >
           Previous
         </button>
         {pageNumbers.map((pageNumber) => (
-          <button key={pageNumber} onClick={() => onPageChange(pageNumber)} disabled={currentPage === pageNumber}>
+          <button
+            className='bg-primary hover:bg-secondary disabled:bg-tertiary1 rounded-md text-white px-2'
+            key={pageNumber}
+            onClick={() => onPageChange(pageNumber)}
+            disabled={currentPage === pageNumber}
+          >
             {pageNumber}
           </button>
         ))}
-        <button disabled={currentPage === totalPages} onClick={() => onPageChange(currentPage + 1)}>
+        <button
+          className='bg-primary hover:bg-secondary disabled:bg-tertiary1 rounded-md text-white px-2'
+          disabled={currentPage === totalPages}
+          onClick={() => onPageChange(currentPage + 1)}
+        >
           Next
         </button>
       </div>

@@ -14,12 +14,6 @@ const config: Config = {
         tertiary1: '#A3AF9E',
         tertiary2: '#00C0F7',
       },
-      screens: {
-        'xs': { 'max': '639px' },
-        'sm': { 'min': '640px', 'max': '767px' },
-        'md': { 'min': '768px', 'max': '1023px' },
-        'lg': { 'min': '1024px' },
-      },
     },
   },
   plugins: [],
