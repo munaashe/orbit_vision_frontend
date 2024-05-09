@@ -17,7 +17,7 @@ const Filter = ({ options, selectedOption, onOptionChange }: FilterProps) => {
             {options.map((option) => (
                 <button
                     key={option.value}
-                    className={`rounded-xl px-4 py-1 text-white ${option.value === selectedOption ? 'bg-primary' : 'bg-secondary'}`}
+                    className={`rounded-xl px-4 text-white text-[14px] py-[1.5px] ${option.value === selectedOption ? 'bg-primary' : 'bg-secondary'}`}
                     onClick={() => onOptionChange(option.value)}
                 >
                     {option.label}
