@@ -22,7 +22,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   const updateProductMutation = useMutation(
     (newStatus) =>
-      fetch(`${baseURL}/products/${product.id}/`, {
+      fetch(`${baseURL}/products/${product?.id}/`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

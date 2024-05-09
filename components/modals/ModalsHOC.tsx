@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Modal from '../Modal';
 import AddShop from "./AddShop";
 import Congratulations from "./Congratulations";
+import Render3d from "./Render3d";
 
 interface ModalHOCProps {
     open: boolean;
@@ -10,7 +11,7 @@ interface ModalHOCProps {
 }
 
 const ModalHOC: React.FC<ModalHOCProps> = ({ open, setOpen }) => {
-    const { data: menu } = useSelector((state: any) => state?.modal);
+    const { modal: menu } = useSelector((state: any) => state?.modal);
     console.log(menu)
     switch (menu) {
         case 'Add Shop':
@@ -21,6 +22,17 @@ const ModalHOC: React.FC<ModalHOCProps> = ({ open, setOpen }) => {
                     size='w-[380px] h-[320px]'
                     content={<AddShop />}
                     title='Add Shopify Shop'
+                    onClose={() => { }}
+                />
+            );
+        case 'Render 3d':
+            return (
+                <Modal
+                    open={open}
+                    setOpen={setOpen}
+                    size='w-[580px] h-[480px]'
+                    content={<Render3d closeModal={() => setOpen(false)} />}
+                    title='Render 3D Images'
                     onClose={() => { }}
                 />
             );
