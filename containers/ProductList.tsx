@@ -5,7 +5,7 @@ import Searchbar from '@/components/Searchbar'
 import Filter from '@/components/Filter'
 import Products from '@/components/Products'
 import Button from '@/components/Button'
-import { Product } from '@/components/Products'
+import { Product } from '@/components/ProductCard'
 
 interface ProductListProps {
     products: Product[]
@@ -28,9 +28,9 @@ const ProductList = ({
         if (selectedFilter === 'all') {
             return true;
         } else if (selectedFilter === 'inStock') {
-            return product.availableQuantity && product.availableQuantity > 0;
+            return product.stock && product.stock > 0;
         } else if (selectedFilter === 'outOfStock') {
-            return !product.availableQuantity || product.availableQuantity === 0;
+            return !product.stock || product.stock === 0;
         } {/*} else if (selectedFilter === 'with3d') {
             return product.has3D;
         } else if (selectedFilter === 'no3d') {
