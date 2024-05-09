@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import denis from '@/assets/denis.jpg'
 
-interface Product {
+export interface Product {
   id: number;
   name: string;
   price: number;

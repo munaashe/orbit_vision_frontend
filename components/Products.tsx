@@ -1,16 +1,8 @@
 'use client'
 import React, { useState } from 'react';
-import ProductCard from './ProductCard';
+import ProductCard, { Product } from './ProductCard';
 import Pagination from './Pagination';
 
-export interface Product {
-    id: number;
-    title: string;
-    description?: string;
-    price: number;
-    imageUrl?: string;
-    availableQuantity?: number;
-}
 
 interface ProductsProp {
     products: Product[];
