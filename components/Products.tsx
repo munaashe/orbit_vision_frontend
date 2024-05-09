@@ -14,7 +14,7 @@ const Products = ({ products }: ProductsProp) => {
     // Calculate the index range of products to display on the current page
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+    const currentProducts = products?.slice(indexOfFirstProduct, indexOfLastProduct);
 
     // Handle page change
     const handlePageChange = (pageNumber: number) => {
@@ -29,7 +29,7 @@ const Products = ({ products }: ProductsProp) => {
     return (
         <div>
             <div className='grid grid-cols-4 gap-4 overflow-y-scroll h-[200px]'>
-                {currentProducts.map((product) => (
+                {currentProducts?.map((product) => (
                     <ProductCard
                         key={product.id}
                         product={product}
@@ -38,7 +38,7 @@ const Products = ({ products }: ProductsProp) => {
             </div>
             <Pagination
                 currentPage={currentPage}
-                totalProducts={products.length}
+                totalProducts={products?.length}
                 productsPerPage={productsPerPage}
                 onPageChange={handlePageChange}
                 onProductsPerPageChange={handleProductsPerPageChange}

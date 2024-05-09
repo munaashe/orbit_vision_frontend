@@ -6,13 +6,23 @@ import Filter from '@/components/Filter'
 import Products from '@/components/Products'
 import Button from '@/components/Button'
 import { Product } from '@/components/ProductCard'
+import { useQuery } from 'react-query'
 
 interface ProductListProps {
-    products: Product[]
 }
 const ProductList = ({
-    products
 }: ProductListProps) => {
+    const baseURL: any = process.env.NEXT_PUBLIC_BASE_API_URL
+    async function getProducts() {
+        const res = await fetch(`${baseURL}/products`)
+        if (!res.ok) {
+            throw new Error('Failed to fetch data')
+        }
+
+        return res.json()
+    }
+
+    const { data: products, isLoading, isError, isSuccess } = useQuery('products', getProducts);
     const onSearch = () => {
 
     }
@@ -24,7 +34,8 @@ const ProductList = ({
         setSelectedFilter(option);
     };
 
-    const filteredProducts = products.filter((product) => {
+
+    const filteredProducts = isSuccess ? products?.filter((product: any) => {
         if (selectedFilter === 'all') {
             return true;
         } else if (selectedFilter === 'inStock') {
@@ -32,13 +43,13 @@ const ProductList = ({
         } else if (selectedFilter === 'outOfStock') {
             return !product.stock || product.stock === 0;
         } {/*} else if (selectedFilter === 'with3d') {
-            return product.has3D;
+          return product.has3D;
         } else if (selectedFilter === 'no3d') {
-            return !product.has3D;
+          return !product.has3D;
         }*/}
 
         return true;
-    });
+    }) : products;
 
     const filterOptions = [
         { label: 'All', value: 'all' },

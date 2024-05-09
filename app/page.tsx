@@ -17,18 +17,9 @@ export default async function Home() {
     return res.json()
   }
 
-  async function getProducts() {
-    const res = await fetch(`${baseURL}/products`)
-    if (!res.ok) {
-      throw new Error('Failed to fetch data')
-    }
 
-    return res.json()
-  }
 
   const accountData = await getAccountDetails()
-  const products = await getProducts()
-  console.log(products)
   return (
     <div className=" p-4 w-full bg-[#e1e1e1]">
       <div className="flex flex-grow items-start justify-center gap-4 w-full">
@@ -42,9 +33,7 @@ export default async function Home() {
           accessToken={accountData[0]?.access_token}
         />
       </div>
-      <ProductList
-        products={products}
-      />
+      <ProductList />
     </div>
   );
 }
